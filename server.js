@@ -5,7 +5,7 @@ const fs = require('fs');
 const reelRoutes = require('./routes/reelRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // आवश्यक फ़ोल्डर्स सुनिश्चित करें
 const dirs = ['uploads', 'edited'];
@@ -16,9 +16,16 @@ dirs.forEach(dir => {
     }
 });
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Full Permissive CORS (Mobile Compatibility Fix)
+app.use(cors({ origin: '*' }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
+
+// Debugger Logger (हर रिक्वेस्ट लॉग करने के लिए)
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} request to ${req.url}`);
+    next();
+});
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
