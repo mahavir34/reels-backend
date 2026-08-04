@@ -16,15 +16,25 @@ async function processAutoReel() {
     }
 
     statusDiv.style.color = "#ffb400";
-    statusDiv.innerHTML = "⏳ 3D ऑटो-एडिटिंग चल रही है...";
+    statusDiv.innerHTML = "⏳ 3D वीडियो रेंडर हो रही है... कृपया 30-40 सेकंड इंतज़ार करें।";
     resultDiv.innerHTML = "";
 
     const formData = new FormData();
     formData.append('video', fileInput.files[0]);
     formData.append('template', template);
 
+    // Timeout को रोकने के लिए Controller
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 मिनट का टाइमआउट
+
     try {
-        const res = await fetch('/api/auto-edit', { method: 'POST', body: formData });
+        const res = await fetch('/api/auto-edit', { 
+            method: 'POST', 
+            body: formData,
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
         const data = await res.json();
 
         if (data.success) {
@@ -36,7 +46,12 @@ async function processAutoReel() {
             statusDiv.innerHTML = "❌ एरर: " + (data.error || "एडिटिंग फेल हुई");
         }
     } catch (err) {
-        statusDiv.style.color = "#ff4d4d";
-        statusDiv.innerHTML = "❌ सर्वर कनेक्शन एरर! कृपया दोबारा ट्राई करें।";
+        if (err.name === 'AbortError') {
+            statusDiv.style.color = "#ffb400";
+            statusDiv.innerHTML = "⏳ रेंडरिंग में थोड़ा ज़्यादा समय लग रहा है, कृपया 10 सेकंड बाद पेज रिफ्रेश करें।";
+        } else {
+            statusDiv.style.color = "#ff4d4d";
+            statusDiv.innerHTML = "❌ सर्वर कनेक्शन एरर! कृपया 1 मिनट बाद दोबारा ट्राई करें।";
+        }
     }
 }
