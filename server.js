@@ -1,23 +1,22 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
+const cors = require('cors');
 const reelRoutes = require('./routes/reelRoutes');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
-app.use('/edited', express.static('edited'));
+// Static Files
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/edited', express.static(path.join(__dirname, 'edited')));
 
-if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
-if (!fs.existsSync('edited')) fs.mkdirSync('edited');
-
+// Routes
 app.use('/api', reelRoutes);
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server Running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
