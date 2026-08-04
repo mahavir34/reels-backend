@@ -1,6 +1,12 @@
+function selectTemplate(templateKey, cardElement) {
+    document.querySelectorAll('.template-card').forEach(card => card.classList.remove('active'));
+    cardElement.classList.add('active');
+    document.getElementById('selectedTemplate').value = templateKey;
+}
+
 async function processAutoReel() {
     const fileInput = document.getElementById('videoFile');
-    const template = document.getElementById('templateSelect').value;
+    const template = document.getElementById('selectedTemplate').value;
     const statusDiv = document.getElementById('status');
     const resultDiv = document.getElementById('videoResult');
 
@@ -10,7 +16,7 @@ async function processAutoReel() {
     }
 
     statusDiv.style.color = "#ffb400";
-    statusDiv.innerHTML = "⏳ ऑटो-एडिटिंग और 3D रेंडरिंग चल रही है...";
+    statusDiv.innerHTML = "⏳ 3D ऑटो-एडिटिंग चल रही है...";
     resultDiv.innerHTML = "";
 
     const formData = new FormData();
@@ -23,7 +29,7 @@ async function processAutoReel() {
 
         if (data.success) {
             statusDiv.style.color = "#00ff7f";
-            statusDiv.innerHTML = "✅ आपकी रील तैयार है!";
+            statusDiv.innerHTML = "✅ आपकी वायरल रील तैयार है!";
             resultDiv.innerHTML = `<video class="video-preview" controls autoplay src="${data.reelUrl}"></video>`;
         } else {
             statusDiv.style.color = "#ff4d4d";
@@ -31,6 +37,6 @@ async function processAutoReel() {
         }
     } catch (err) {
         statusDiv.style.color = "#ff4d4d";
-        statusDiv.innerHTML = "❌ सर्वर कनेक्शन एरर!";
+        statusDiv.innerHTML = "❌ सर्वर कनेक्शन एरर! कृपया दोबारा ट्राई करें।";
     }
 }

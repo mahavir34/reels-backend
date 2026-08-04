@@ -1,14 +1,20 @@
-body { background-color: #0b0b0b; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
-.app-container { background: #161616; width: 100%; max-width: 400px; border-radius: 20px; padding: 20px; border: 1px solid #2a2a2a; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+body { background-color: #0b0b0b; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; }
+.app-container { background: #161616; width: 100%; max-width: 420px; border-radius: 20px; padding: 20px; border: 1px solid #2a2a2a; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 .header { display: flex; justify-content: space-between; align-items: center; }
 h2 { color: #f20056; margin: 0; font-size: 20px; }
-.badge { background: #333; color: #aaa; font-size: 11px; padding: 4px 8px; border-radius: 12px; font-weight: bold; }
-p { color: #888; font-size: 13px; margin: 8px 0 20px 0; }
-.section-title { font-size: 13px; color: #ddd; margin-bottom: 8px; text-align: left; font-weight: 600; }
-.custom-select { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #333; border-radius: 10px; margin-bottom: 15px; outline: none; font-size: 14px; }
+.badge { background: linear-gradient(45deg, #f20056, #ff007f); color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 12px; font-weight: bold; }
+p { color: #888; font-size: 12px; margin: 6px 0 18px 0; }
+.section-title { font-size: 13px; color: #ddd; margin-bottom: 10px; text-align: left; font-weight: 600; }
+
+.template-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.template-card { background: #222; border: 2px solid #333; border-radius: 14px; padding: 12px; text-align: center; cursor: pointer; position: relative; transition: all 0.2s ease; }
+.template-card.active { border-color: #f20056; background: #2a121b; }
+.card-icon { font-size: 22px; margin-bottom: 4px; }
+.card-title { font-size: 12px; font-weight: 600; color: #fff; }
+.card-tag { position: absolute; top: 6px; right: 6px; background: #333; color: #ffb400; font-size: 9px; padding: 2px 6px; border-radius: 8px; font-weight: bold; }
+
 .upload-card { border: 2px dashed #f20056; border-radius: 14px; padding: 15px; margin-bottom: 15px; background: #101010; text-align: center; }
-input[type="file"] { width: 90%; color: #fff; }
+input[type="file"] { width: 90%; color: #fff; font-size: 12px; }
 .btn-primary { background: linear-gradient(45deg, #f20056, #ff007f); color: white; font-weight: bold; padding: 14px; width: 100%; border: none; border-radius: 12px; font-size: 15px; cursor: pointer; box-shadow: 0 4px 15px rgba(242, 0, 86, 0.4); }
-.vip-banner { margin-top: 15px; background: linear-gradient(90deg, #ff8c00, #e52e71); padding: 10px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: bold; cursor: pointer; }
 .video-preview { margin-top: 15px; width: 100%; border-radius: 12px; border: 2px solid #333; }
 #status { margin-top: 15px; font-size: 13px; font-weight: bold; text-align: center; }

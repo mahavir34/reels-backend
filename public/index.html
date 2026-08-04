@@ -3,36 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Reel Engine 🚀 (VIP Build)</title>
+    <title>Viral Reel Engine 🚀</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="app-container">
         <div class="header">
-            <h2>🎬 Auto Reel Engine</h2>
-            <span class="badge" id="userBadge">FREE PLAN</span>
+            <h2>🎬 Viral Reel Engine</h2>
+            <span class="badge">PRO BUILD</span>
         </div>
-        <p>टेम्पलेट चुनें और 1-क्लिक में वायरल रील बनाएं!</p>
+        <p>अपना मनपसंद टेम्पलेट चुनें और 1-क्लिक में रील बनाएं!</p>
 
-        <!-- टेम्पलेट सिलेक्शन -->
-        <div class="section-title">1. टेम्पलेट चुनें (Select Template):</div>
-        <select id="templateSelect" class="custom-select">
-            <option value="blur_bg">🆓 Blur BG + Color Filter (Free)</option>
-            <option value="beat_sync">👑 VIP: Beat-Sync & Auto Shake</option>
-            <option value="phone_frame">👑 VIP: 3D Phone Frame Mockup</option>
-        </select>
+        <!-- टेम्पलेट कार्ड्स ग्रिड -->
+        <div class="section-title">1. ट्रेंडिंग टेम्पलेट चुनें (Select Template):</div>
+        <div class="template-grid">
+            <div class="template-card active" onclick="selectTemplate('phone_frame', this)">
+                <div class="card-icon">📱</div>
+                <div class="card-title">3D Phone Mockup</div>
+                <div class="card-tag">VIP</div>
+            </div>
+            <div class="template-card" onclick="selectTemplate('beat_sync', this)">
+                <div class="card-icon">⚡</div>
+                <div class="card-title">Beat Sync Shake</div>
+                <div class="card-tag">VIP</div>
+            </div>
+            <div class="template-card" onclick="selectTemplate('3d_card_slide', this)">
+                <div class="card-icon">🎴</div>
+                <div class="card-title">3D Card Slide</div>
+                <div class="card-tag">NEW</div>
+            </div>
+            <div class="template-card" onclick="selectTemplate('blur_bg', this)">
+                <div class="card-icon">🎨</div>
+                <div class="card-title">Cinematic Blur</div>
+                <div class="card-tag">FREE</div>
+            </div>
+        </div>
+
+        <input type="hidden" id="selectedTemplate" value="phone_frame">
 
         <!-- फाइल अपलोड -->
         <div class="upload-card">
             <input type="file" id="videoFile" accept="video/*">
         </div>
 
-        <button onclick="processAutoReel()" class="btn-primary">✨ Auto Edit & Create Reel</button>
-
-        <!-- VIP Upgrade Banner -->
-        <div class="vip-banner" onclick="showVipModal()">
-            <span>👑 VIP Plan ले और 3D Phone Mockups अनलॉक करें!</span>
-        </div>
+        <button onclick="processAutoReel()" class="btn-primary">✨ Create Auto Reel</button>
 
         <div id="status"></div>
         <div id="videoResult"></div>
