@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Reel Engine 🚀 (VIP Build)</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h2>🎬 Auto Reel Engine</h2>
+            <span class="badge" id="userBadge">FREE PLAN</span>
+        </div>
+        <p>टेम्पलेट चुनें और 1-क्लिक में वायरल रील बनाएं!</p>
+
+        <!-- टेम्पलेट सिलेक्शन -->
+        <div class="section-title">1. टेम्पलेट चुनें (Select Template):</div>
+        <select id="templateSelect" class="custom-select">
+            <option value="blur_bg">🆓 Blur BG + Color Filter (Free)</option>
+            <option value="beat_sync">👑 VIP: Beat-Sync & Auto Shake</option>
+            <option value="phone_frame">👑 VIP: 3D Phone Frame Mockup</option>
+        </select>
+
+        <!-- फाइल अपलोड -->
+        <div class="upload-card">
+            <input type="file" id="videoFile" accept="video/*">
+        </div>
+
+        <button onclick="processAutoReel()" class="btn-primary">✨ Auto Edit & Create Reel</button>
+
+        <!-- VIP Upgrade Banner -->
+        <div class="vip-banner" onclick="showVipModal()">
+            <span>👑 VIP Plan ले और 3D Phone Mockups अनलॉक करें!</span>
+        </div>
+
+        <div id="status"></div>
+        <div id="videoResult"></div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
